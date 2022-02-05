@@ -1,6 +1,8 @@
 package kea.sem3.jwtdemo.configuration;
 
 import kea.sem3.jwtdemo.entity.*;
+import kea.sem3.jwtdemo.repositories.CarRepository;
+import kea.sem3.jwtdemo.repositories.MemberRepository;
 import kea.sem3.jwtdemo.security.UserRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -16,9 +18,12 @@ public class MakeTestData implements ApplicationRunner {
 
 
     UserRepository userRepository;
+    MemberRepository memberRepository;
+    CarRepository carRepository;
 
-    public MakeTestData(UserRepository userRepository) {
+    public MakeTestData(UserRepository userRepository, MemberRepository memberRepository) {
         this.userRepository = userRepository;
+        this.memberRepository = memberRepository;
     }
 
     public  void makePlainUsers(){
@@ -34,6 +39,17 @@ public class MakeTestData implements ApplicationRunner {
         userRepository.save(user);
         userRepository.save(admin);
         userRepository.save(both);
+
+
+        Member member1 = new Member("vvv","s@f.dk","test12","Kurt");
+        member1.addRole(Role.USER);
+        memberRepository.save(member1);
+
+        Car car = new Car("VW","Golf",1000);
+        carRepository.save(car);
+
+
+
 
         System.out.println("########################################################################################");
         System.out.println("########################################################################################");
