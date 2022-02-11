@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.time.Month;
 
 @Controller
-@Profile("!test")
+@Profile("!test") // kører ikke når der testes
 public class MakeTestData implements ApplicationRunner {
 
 
