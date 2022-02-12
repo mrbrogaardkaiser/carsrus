@@ -11,12 +11,15 @@ import java.util.List;
 
 @Service
     public class CarService {
+
         CarRepository carRepository;
+
         public CarService(CarRepository carRepository) {
             this.carRepository = carRepository;
         }
+
         public List<CarResponse> getCars(){// returnere en liste af car-objekter fra entityklassen
-            List<Car> cars = cars = carRepository.findAll();
+            List<Car> cars = carRepository.findAll();
             return CarResponse.getCarsFromEntities(cars);
         }
 

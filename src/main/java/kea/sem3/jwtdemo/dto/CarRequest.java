@@ -10,11 +10,11 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public class CarRequest {
-        @Enumerated(EnumType.STRING)
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class CarRequest {
+        //@Enumerated(EnumType.STRING)
         private String brand;
         private String model;
         private double pricePrDay;

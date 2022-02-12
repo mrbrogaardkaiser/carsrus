@@ -1,6 +1,7 @@
 package kea.sem3.jwtdemo.service;
 
-import kea.sem3.jwtdemo.dto.MemberDto;
+import kea.sem3.jwtdemo.dto.MemberRequest;
+import kea.sem3.jwtdemo.dto.MemberResponse;
 import kea.sem3.jwtdemo.entity.Member;
 import kea.sem3.jwtdemo.repositories.MemberRepository;
 
@@ -14,24 +15,24 @@ public class MemberService {
         this.memberRepository= memberRepository;
     }
 
-    public MemberDto getMember(String username) throws Exception{
+    public MemberResponse getMember(String username) throws Exception{
         Member member = memberRepository.findMemberByUsername(username);
-        return new MemberDto(member);
+        return new MemberResponse(member,false);
     }
 
-    public List<MemberDto> getMembers(){
+    public List<MemberResponse> getMembers(){
         List<Member> members = memberRepository.findAll();
-        return members.stream().map(MemberDto::new).collect(Collectors.toList());
+        return MemberResponse.getMembersFromEntities(members);
     }
 
-    public MemberDto addMember(MemberDto body){
+    public MemberResponse addMember(MemberRequest body){
         Member newMember = memberRepository.save(new Member(body));
-        return new MemberDto(newMember);
+        return new MemberResponse(newMember,false);
     }
 
-    public void deleteCustomer(String username) throws Exception{
+    public void deleteMember(String username) throws Exception{
         if(!memberRepository.existsById(username)){
-            throw  new Exception("Not found");
+            throw new Exception("Not found");
         }
         memberRepository.deleteById(username);
     }

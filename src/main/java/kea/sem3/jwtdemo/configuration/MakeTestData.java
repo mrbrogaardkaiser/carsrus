@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
 
 @Controller
@@ -42,7 +43,7 @@ public class MakeTestData implements ApplicationRunner {
         userRepository.save(both);
 
 
-        Member member1 = new Member("Ib","a@b.dk","123","Poul","Hartling","Vejnavn","København","1662",20,LocalDate.of(1953,4,16));
+        Member member1 = new Member("Ib","a@b.dk","123","Poul","Hartling","Vejnavn","København","1662",20, LocalDate.of(1953,4,16));
         member1.addRole(Role.USER);
         memberRepository.save(member1);
 

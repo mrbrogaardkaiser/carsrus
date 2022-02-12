@@ -1,6 +1,6 @@
 package kea.sem3.jwtdemo.entity;
 
-import kea.sem3.jwtdemo.dto.MemberDto;
+import kea.sem3.jwtdemo.dto.MemberRequest;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,8 +8,8 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -41,11 +41,18 @@ public class Member extends BaseUser{
         this.datOfBirth = datOfBirth;
     }
 
-    public Member(MemberDto body){
+    public Member(MemberRequest body){
         this.setUsername(body.getUsername());
+        this.setEmail(body.getEmail());
+        this.setPassword(body.getPassword());
         this.setFirstName(body.getFirstName());
         this.setLastName(body.getLastName());
-        this.setEmail(body.getEmail());
+        this.setCity(body.getCity());
+        this.setDatOfBirth(body.getDateOfBirth());
+        this.setStreet(body.getStreet());
+        this.setZip(body.getZip());
+        this.setRanking(body.getRanking());
+
     }
 
 
