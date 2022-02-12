@@ -35,7 +35,10 @@ import java.util.List;
         public CarResponse editCar(@RequestBody CarRequest body, @PathVariable int id){return null;}
 
         @DeleteMapping("/{id}")
-        public void deleteCar(@PathVariable int id){}
+        public void deleteCar(@PathVariable int id)throws Exception{
+            carService.deleteCar(id);
+
+        }
 
     }
 

@@ -4,10 +4,12 @@ import kea.sem3.jwtdemo.dto.MemberRequest;
 import kea.sem3.jwtdemo.dto.MemberResponse;
 import kea.sem3.jwtdemo.entity.Member;
 import kea.sem3.jwtdemo.repositories.MemberRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class MemberService {
     MemberRepository memberRepository;
 
@@ -15,9 +17,9 @@ public class MemberService {
         this.memberRepository= memberRepository;
     }
 
-    public MemberResponse getMember(String username) throws Exception{
+    public MemberResponse getMember(String username, boolean includeAll) throws Exception{
         Member member = memberRepository.findMemberByUsername(username);
-        return new MemberResponse(member,false);
+        return new MemberResponse(member,includeAll);
     }
 
     public List<MemberResponse> getMembers(){

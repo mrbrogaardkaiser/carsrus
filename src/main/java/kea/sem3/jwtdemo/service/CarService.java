@@ -25,7 +25,7 @@ import java.util.List;
 
         public CarResponse getCar(int id,boolean all) throws Exception {
             Car car = carRepository.findById(id).orElseThrow(()-> new Client4xxException("No car with that ID"));
-            return new CarResponse(car,false);
+            return new CarResponse(car,all);
         }
 
         public CarResponse addCar(CarRequest body){
@@ -36,8 +36,14 @@ import java.util.List;
         public CarResponse editCar(CarRequest body,int id){
             return null;
         }
-        public void deleteCar(int id) {
-            //return null;
+
+
+        public void deleteCar(int id) throws Exception{
+            if(!carRepository.existsById(id)) {
+                throw new Exception("Not found");
+            }
+            carRepository.deleteById(id);
+
         }
     }
 
