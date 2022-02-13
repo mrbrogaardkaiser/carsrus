@@ -32,6 +32,11 @@ public class MemberController {
         return memberService.getMember(username,false);
     }
 
+    @PutMapping("/{username}")
+    public MemberResponse editMember(@RequestBody MemberRequest body, @PathVariable String username) throws Exception{
+        return memberService.editMember(body, username);
+    }
+
     @PostMapping
     public MemberResponse addMember(@RequestBody MemberRequest body){
         return memberService.addMember(body);

@@ -32,6 +32,25 @@ public class MemberService {
         return new MemberResponse(newMember,false);
     }
 
+    public MemberResponse editMember(MemberRequest body, String username) throws Exception {
+        if(!memberRepository.existsById(username)){
+            throw new Exception("Not found");
+        }
+        Member member = memberRepository.findMemberByUsername(username);
+        member.setFirstName(body.getFirstName());
+        member.setLastName(body.getLastName());
+        member.setStreet(body.getStreet());
+        member.setZip(body.getZip());
+        member.setCity(body.getCity());
+        member.setPassword(body.getPassword());
+        member.setUsername(body.getEmail());
+        member.setEmail(body.getEmail());
+        member.setDatOfBirth(body.getDateOfBirth());
+        return new MemberResponse(member, true);
+    }
+
+
+
     public void deleteMember(String username) throws Exception{
         if(!memberRepository.existsById(username)){
             throw new Exception("Not found");

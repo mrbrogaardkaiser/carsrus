@@ -34,7 +34,13 @@ import java.util.List;
         }
 
         public CarResponse editCar(CarRequest body,int id){
-            return null;
+            Car car = carRepository.findById(id).orElseThrow();
+            car.setBrand(body.getBrand());
+            car.setModel(body.getModel());
+            car.setPricePrDay(body.getPricePrDay());
+            return new CarResponse(car, true);
+
+
         }
 
 

@@ -18,7 +18,7 @@ public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    private int id;
 
     @Column(nullable = false)
     private String brand;
@@ -30,10 +30,10 @@ public class Car {
     private double bestDiscount;
 
     @CreationTimestamp
-    LocalDateTime created;
+    private LocalDateTime created;
 
     @UpdateTimestamp
-    LocalDateTime updated;
+    private LocalDateTime updated;
 
     public Car() {
     }
@@ -80,7 +80,7 @@ public class Car {
         return pricePrDay;
     }
 
-    public void setPricePrDay(int pricePrDay) {
+    public void setPricePrDay(double pricePrDay) {
         this.pricePrDay = pricePrDay;
     }
 
