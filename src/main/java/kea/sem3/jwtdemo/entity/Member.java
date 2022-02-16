@@ -1,5 +1,6 @@
 package kea.sem3.jwtdemo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import kea.sem3.jwtdemo.dto.MemberRequest;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,8 +9,11 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -29,6 +33,11 @@ public class Member extends BaseUser{
     private int ranking;
 
     private LocalDate datOfBirth;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "member")
+    private Set<Reservation> reservations = new HashSet<>();
+
 
     public Member(String username, String email, String password, String firstName, String lastName, String street, String city, String zip, int ranking, LocalDate datOfBirth) {
         super(username, email, password);
@@ -62,6 +71,11 @@ public class Member extends BaseUser{
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public void addReservation(Reservation reservation){
+        reservation.setMember(this);
+        reservations.add(reservation);
     }
 
 
