@@ -11,10 +11,15 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 
 import java.util.List;
 
+// CREATE: POST
+// READ: GET
+// UPDATE: PUT - alle fields skal med
+// UPDATE: PATCH - kun de fields der skal ændres - måske kun ét field
+// DELETE: DELETE
+
 @RestController
 @RequestMapping("api/members")
 public class MemberController {
-
 
     MemberService memberService;
 

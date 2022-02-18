@@ -19,12 +19,14 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 
+import javax.transaction.Transactional;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.hamcrest.Matchers.*;
 
-
+@Transactional
 @SpringBootTest // gør hvad der skal til så vi får en fuld app kontekst. vi kan gøre alt det vi kunne fra postman.
 @AutoConfigureMockMvc
 @ActiveProfiles("test")

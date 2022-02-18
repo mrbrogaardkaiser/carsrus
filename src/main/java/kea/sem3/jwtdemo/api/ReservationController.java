@@ -8,6 +8,7 @@ import kea.sem3.jwtdemo.entity.Reservation;
 import kea.sem3.jwtdemo.repositories.CarRepository;
 import kea.sem3.jwtdemo.repositories.MemberRepository;
 import kea.sem3.jwtdemo.repositories.ReservationRepository;
+import kea.sem3.jwtdemo.security.UserRepository;
 import kea.sem3.jwtdemo.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,6 @@ public class ReservationController {
     @Autowired
     MemberRepository memberRepository;
 
-
     public ReservationController(ReservationRepository reservationRepository, CarRepository carRepository, MemberRepository memberRepository) {
         this.reservationRepository = reservationRepository;
         this.carRepository = carRepository;
@@ -38,7 +38,7 @@ public class ReservationController {
     }
 
     @PostMapping("/{id}")
-    Reservation getReservation(@RequestBody int id){
+    Reservation getReservation(@PathVariable int id){
         return reservationRepository.getById(id);
     }
 
@@ -68,5 +68,4 @@ public class ReservationController {
       reservation.setMember(member);
       return reservationRepository.save(reservation);
     }
-
 }

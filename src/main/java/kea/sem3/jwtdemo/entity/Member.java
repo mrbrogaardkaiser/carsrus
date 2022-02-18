@@ -6,10 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -35,7 +32,7 @@ public class Member extends BaseUser{
     private LocalDate datOfBirth;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member",fetch = FetchType.EAGER)
     private Set<Reservation> reservations = new HashSet<>();
 
 
@@ -74,9 +71,7 @@ public class Member extends BaseUser{
     }
 
     public void addReservation(Reservation reservation){
-        reservation.setMember(this);
         reservations.add(reservation);
     }
-
 
 }

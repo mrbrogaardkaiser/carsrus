@@ -66,4 +66,14 @@ public class BaseUser implements UserWithPassword {
       roles.add(role);
    }
 
+   @Override
+   public String toString() {
+      return "BaseUser{" +
+              "username='" + username + '\'' +
+              ", email='" + email + '\'' +
+              ", password='" + password + '\'' +
+              ", enabled=" + enabled +
+              ", roles=" + roles +
+              '}';
+   }
 }

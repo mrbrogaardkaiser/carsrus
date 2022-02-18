@@ -33,18 +33,24 @@ import java.util.List;
             return new CarResponse(carNew, true);
         }
 
+
+        // Only for admins
         public CarResponse editCar(CarRequest body,int id){
             Car car = carRepository.findById(id).orElseThrow();
             car.setBrand(body.getBrand());
             car.setModel(body.getModel());
             car.setPricePrDay(body.getPricePrDay());
             return new CarResponse(car, true);
-
-
         }
 
+    // service method for patch. Only for admins
+    public void updatePrice(int carId,double newPricePrDay){
+        Car car = carRepository.findById(carId).orElseThrow();
+        car.setPricePrDay(newPricePrDay);
+        carRepository.save(car);
+    }
 
-        public void deleteCar(int id) throws Exception{
+    public void deleteCar(int id) throws Exception{
             if(!carRepository.existsById(id)) {
                 throw new Exception("Not found");
             }

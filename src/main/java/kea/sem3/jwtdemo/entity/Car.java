@@ -39,7 +39,7 @@ public class Car {
     private LocalDateTime updated;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "car")
+    @OneToMany(mappedBy = "car", fetch = FetchType.EAGER)
     private Set<Reservation> reservations = new HashSet<>();
 
     public Car() {
@@ -92,7 +92,6 @@ public class Car {
     }
 
     public void addReservation(Reservation reservation){
-        reservation.setCar(this);
         reservations.add(reservation);
     }
 

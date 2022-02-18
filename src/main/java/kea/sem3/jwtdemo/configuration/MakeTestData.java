@@ -71,10 +71,29 @@ public class MakeTestData implements ApplicationRunner {
         carRepository.save(car1);
 
 
-        Reservation r1 = new Reservation();
-        r1.setRentalDate(LocalDate.of(2022,3,4));
+        Reservation r1 = new Reservation(LocalDate.of(2022,3,4),car,member1);
+
+        System.out.println(car.getReservations().size());
+        System.out.println(r1);
+
         reservationRepository.save(r1);
 
+
+
+
+/*
+        Reservation res = reservationRepository.findReservationByReservedCar_IdAndRentalDate(car.getId(),LocalDate.of(2022,4,5));
+
+        if(res==null){
+            //Reservation r2 = new Reservation(LocalDate.of(2022,4,5),car,member3);
+            //reservationRepository.save(r2);
+
+
+        }
+        else
+            System.out.println("Car is booked");
+
+*/
 
         System.out.println("########################################################################################");
         System.out.println("########################################################################################");

@@ -4,31 +4,44 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private LocalDate reservationDate;
+    @CreationTimestamp
+    private LocalDateTime reservationDate;
+
     private LocalDate rentalDate;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+
     @JoinColumn(name = "car_id", referencedColumnName = "id")
+    @ManyToOne
     private Car car;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+
     @JoinColumn(name = "member_username", referencedColumnName = "username")
+    @ManyToOne
     private Member member;
+
+    public Reservation(LocalDate rentalDate, Car car, Member member){
+        this.rentalDate=rentalDate;
+        this.car= car;
+        this.member=member;
+        car.addReservation(this);
+        member.addReservation(this);
+    }
 
     public void setCar(Car car){
         this.car= car;
@@ -38,7 +51,14 @@ public class Reservation {
         this.member=member;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", reservationDate=" + reservationDate +
+                ", rentalDate=" + rentalDate +
+                ", car=" + car +
+                ", member=" + member +
+                '}';
+    }
 }

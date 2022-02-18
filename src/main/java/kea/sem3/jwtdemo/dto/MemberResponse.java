@@ -29,6 +29,9 @@ public class MemberResponse {
 
     private LocalDate dateOfBirth;
 
+
+    //TODO: insert created, edited, Boolean isapproved, Byte ranking -> wrapper typer der kan være null
+
     public MemberResponse(Member member, boolean includeAll){
         this.username= member.getUsername();
         this.email=member.getEmail();
