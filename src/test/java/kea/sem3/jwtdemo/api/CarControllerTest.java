@@ -48,7 +48,7 @@ class CarControllerTest {
         carFordId = carRepository.save(new Car("Ford", "Focus", 400, 10)).getId();
         carSuzukiId = carRepository.save(new Car("Suzuki", "Vitara", 500, 14)).getId();
     }
-
+/*
     @Test
     void getCars() {
     }
@@ -109,4 +109,6 @@ class CarControllerTest {
     @Test
     void deleteCar() throws Exception {
     }
+
+ */
 }
