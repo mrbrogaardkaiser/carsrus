@@ -72,11 +72,15 @@ public class MakeTestData implements ApplicationRunner {
 
 
         Reservation r1 = new Reservation(LocalDate.of(2022,3,4),car,member1);
+        Reservation r3 = new Reservation(LocalDate.of(2022,3,4),car2,member3);
+        Reservation r5 = new Reservation(LocalDate.of(2022,3,4),car1,member4);
 
         System.out.println(car.getReservations().size());
         System.out.println(r1);
 
         reservationRepository.save(r1);
+        reservationRepository.save(r3);
+        reservationRepository.save(r5);
 
 
 

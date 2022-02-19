@@ -48,7 +48,7 @@ class CarControllerTest {
         carFordId = carRepository.save(new Car("Ford", "Focus", 400, 10)).getId();
         carSuzukiId = carRepository.save(new Car("Suzuki", "Vitara", 500, 14)).getId();
     }
-/*
+
     @Test
     void getCars() {
     }
@@ -98,7 +98,7 @@ class CarControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").exists());
         //Verify that it actually ended in the database
-        assertEquals(11, carRepository.count());
+        assertEquals(3, carRepository.count());
 
     }
 
@@ -110,5 +110,5 @@ class CarControllerTest {
     void deleteCar() throws Exception {
     }
 
- */
+
 }
