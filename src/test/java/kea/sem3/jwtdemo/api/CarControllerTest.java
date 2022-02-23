@@ -29,7 +29,7 @@ import static org.hamcrest.Matchers.*;
 @Transactional
 @SpringBootTest // gør hvad der skal til så vi får en fuld app kontekst. vi kan gøre alt det vi kunne fra postman.
 @AutoConfigureMockMvc
-@ActiveProfiles("test")
+@ActiveProfiles("test") // vi kører kun denne
 class CarControllerTest {
 
     @Autowired
@@ -57,11 +57,11 @@ class CarControllerTest {
     public void testCarById() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders
-                        .get("/api/cars/" + carFordId)
-                        .accept(MediaType.APPLICATION_JSON))
+                        .get("/api/cars/" + carFordId) // laver get request op mod serveren
+                        .accept(MediaType.APPLICATION_JSON))// det jeg gerne vil have retur. ligesom for postman. Mediatype: enum
                 .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())// chekcer om statuskode er ok
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))// er det json
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").exists())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(carFordId))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.model").value("Focus"));
