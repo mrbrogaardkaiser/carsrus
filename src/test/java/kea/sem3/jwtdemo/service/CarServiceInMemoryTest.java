@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest // anvende h2 in memory db. github actions kan køre vores test uden at have adgang til vores "rigtige" db
 class CarServiceInMemoryTest {
 
-
     @Autowired
     CarRepository carRepository;
 

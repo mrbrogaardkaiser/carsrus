@@ -1,5 +1,7 @@
 package kea.sem3.jwtdemo.entity;
 
+import kea.sem3.jwtdemo.dto.CarRequest;
+import kea.sem3.jwtdemo.dto.ReservationRequest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,6 +44,14 @@ public class Reservation {
         car.addReservation(this);
         member.addReservation(this);
     }
+
+    public Reservation(ReservationRequest body){
+        this.id= body.getId();
+        this.rentalDate= body.getRentalDate();
+        this.car = body.getCar();
+        this.member=body.getMember();
+    }
+
 
     public void setCar(Car car){
         this.car= car;

@@ -19,11 +19,8 @@ import java.util.List;
 @RequestMapping("api/reservations")
 public class ReservationController {
 
-    @Autowired
     ReservationRepository reservationRepository;
-    @Autowired
     CarRepository carRepository;
-    @Autowired
     MemberRepository memberRepository;
 
     public ReservationController(ReservationRepository reservationRepository, CarRepository carRepository, MemberRepository memberRepository) {
