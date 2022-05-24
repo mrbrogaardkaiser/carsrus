@@ -27,7 +27,6 @@ public class Reservation {
 
     private LocalDate rentalDate;
 
-
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     @ManyToOne
     private Car car;

@@ -19,7 +19,6 @@ import java.util.Set;
 @Setter
 @Entity
 @EqualsAndHashCode
-
 public class Car {
 
     @Id
@@ -97,9 +96,6 @@ public class Car {
     public void addReservation(Reservation reservation){
         reservations.add(reservation);
     }
-
-
-
 
     @Override
     public String toString() {

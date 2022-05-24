@@ -18,7 +18,6 @@ import java.time.Month;
 @Profile("!test") // kører ikke når der testes
 public class MakeTestData implements ApplicationRunner {
 
-
     UserRepository userRepository;
     MemberRepository memberRepository;
     CarRepository carRepository;
@@ -117,8 +116,8 @@ public class MakeTestData implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        userRepository.deleteAll();
-        makePlainUsers();
+        //userRepository.deleteAll();
+        //makePlainUsers();
 
     }
 }

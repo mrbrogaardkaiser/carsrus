@@ -2,10 +2,10 @@ package kea.sem3.jwtdemo.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kea.sem3.jwtdemo.dto.CarRequest;
-import kea.sem3.jwtdemo.dto.CarResponse;
+
 import kea.sem3.jwtdemo.entity.Car;
 import kea.sem3.jwtdemo.repositories.CarRepository;
-import org.junit.jupiter.api.BeforeAll;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
@@ -60,7 +59,7 @@ class CarControllerTest {
                         .get("/api/cars/" + carFordId) // laver get request op mod serveren
                         .accept(MediaType.APPLICATION_JSON))// det jeg gerne vil have retur. ligesom for postman. Mediatype: enum
                 .andDo(print())
-                .andExpect(status().isOk())// chekcer om statuskode er ok
+                .andExpect(status().isOk())// checker om statuskode er ok
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))// er det json
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").exists())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(carFordId))

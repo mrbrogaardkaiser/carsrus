@@ -34,7 +34,7 @@ public class ReservationController {
         return reservationRepository.findAll();
     }
 
-    @PostMapping("/{id}")
+    @GetMapping("/{id}")
     Reservation getReservation(@PathVariable int id){
         return reservationRepository.getById(id);
     }
