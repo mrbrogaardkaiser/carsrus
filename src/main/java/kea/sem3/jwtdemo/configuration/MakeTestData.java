@@ -117,7 +117,7 @@ public class MakeTestData implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         //userRepository.deleteAll();
-        //makePlainUsers();
+        makePlainUsers();
 
     }
 }
